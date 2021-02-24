@@ -1,0 +1,39 @@
+<div fxLayout="column" fxLayoutGap="16px">
+  <button mat-raised-button color="primary" (click)="goToUsers()">Return to Users</button>
+  <div *ngIf="orders$ | async as orders; else ordersLoadingMessage">
+    <mat-table [dataSource]="orders" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="product_type">
+        <mat-header-cell *matHeaderCellDef> Product type </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.product_type }} </mat-cell>
+      </ng-container>
+    
+
+      <ng-container matColumnDef="product_name">
+        <mat-header-cell *matHeaderCellDef> Product name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.product_name }} </mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.price }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="paid">
+        <mat-header-cell *matHeaderCellDef> Paid </mat-header-cell>
+        <mat-cell *matCellDef="let element"><mat-icon>{{ element.paid ? 'check' : 'close' }}</mat-icon></mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <ng-template #ordersLoadingMessage>
+    Fetching Orders...
+  </ng-template>
+</div>

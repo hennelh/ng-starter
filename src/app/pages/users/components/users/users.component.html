@@ -1,0 +1,17 @@
+<div *ngIf="users$ | async as users; else usersLoadingMessage" fxLayout="column" fxFlexFill fxLayoutGap="16px">
+  <mat-toolbar>
+    <mat-form-field style="width: 100%" floatLabel='never'>
+    <input  
+      matInput
+      [(ngModel)]="searchText" 
+      placeholder="Filter by name..." 
+      autocomplete="off" >
+    </mat-form-field>
+  </mat-toolbar>
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <app-user-card fxFlex="20%" fxFlex.xs="50%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let user of users | userNameFilter : searchText | orderBy: 'name'" [user]="user"></app-user-card>
+  </div>
+</div>
+<ng-template #usersLoadingMessage>
+  Fetching Users...
+</ng-template>
