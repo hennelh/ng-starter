@@ -13,8 +13,6 @@ export class UserCardComponent {
   avatarUrl: string;
 
   constructor(private avatarGenerator: AvatarGenerator) {
-    // huge content shifts occuring with the random svg when resizing
-    // cool generator for random avatar pics though
     this.avatarUrl = `url('${this.avatarGenerator.generateRandomAvatar()}')`;
   }
 
