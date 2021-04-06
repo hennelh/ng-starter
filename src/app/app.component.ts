@@ -12,12 +12,11 @@ export class AppComponent implements OnInit {
 
   @ViewChild('drawer') drawer: MatDrawer;
   sidnavSubscription: Subscription;
+  title = 'starter-app';
 
   constructor(
     private layoutService: LayoutService
   ) { }
-  
-  title = 'starter-app';
 
   ngOnInit(): void {
     this.sidnavSubscription = this.layoutService.openSideNav.subscribe((res) => {
@@ -25,7 +24,7 @@ export class AppComponent implements OnInit {
         this.drawer.open();
       }
     }, error => {
-      console.log(error)
+      console.log(error);
     });
   }
 }

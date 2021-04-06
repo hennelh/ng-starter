@@ -7,8 +7,8 @@ import { User } from '../models/user.model';
 export class UserNameFilterPipe implements PipeTransform {
 
   transform(users: User[], name: string): User[] {
-    if (!users) return [];
-    if (!name) return users;
+    if (!users) { return []; }
+    if (!name) { return users; }
     name = name.toLowerCase();
     return users.filter(user => user.name.toLowerCase().includes(name));
   }

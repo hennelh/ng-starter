@@ -10,7 +10,7 @@ import { User } from '../models/user.model';
 })
 export class UsersService {
 
-  userBaseUrl = "https://5fb6135636e2fa00166a4d8a.mockapi.io/api";
+  userBaseUrl = 'https://5fb6135636e2fa00166a4d8a.mockapi.io/api';
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class UsersService {
   getUserOrders(id: string): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.userBaseUrl}/users/${id}/orders`).pipe(
       catchError(this.handleError<Order[]>('getUserOrders', []))
-    )
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
