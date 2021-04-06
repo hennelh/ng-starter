@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 export class UserOrdersComponent implements OnInit {
 
   orders$: Observable<Order[]>;
-  displayedColumns: string[] = ['id', 'product_type', 'product_name', 'price', 'paid'];
+  displayedColumns: string[] = ['id', 'productType', 'productName', 'price', 'paid'];
 
   constructor(
     private route: ActivatedRoute,
